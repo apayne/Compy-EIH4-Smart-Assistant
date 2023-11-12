@@ -77,5 +77,7 @@ Now that the definition for the access point is set, you will want to bring up t
 
 Let's see what we have available:
 
-    python --version ; echo ; gcc -v ; echo ; make -v
+    python --version ; echo ; gcc -v ; echo ; make -v ; echo ; curl --version ; echo ; git --version
+
+I happened to have both wget and curl available, but no git installation.
 
