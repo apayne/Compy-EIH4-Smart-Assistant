@@ -47,3 +47,28 @@ Once the serial cable is connected, and the correct serial port found, you will 
 Save these settings for later use.  I simply named mine "Compy-EIH4".
 
 Once you have the settings, open them to start the command line.  You should see a blank window. If everything went well, you should be able to press enter and see a command line prompt.
+
+Let's look around and see what is here:
+
+    uname -a ; cat /proc/cpuinfo | grep "model name" ; echo ; free ; echo ; df ; iwconfig
+
+# Wireless Connectivity
+
+These devices come with Wifi and Bluetooth.  Wifi means the possibility of SSH access, and with it, remote file transfers.  First we need to configure wpa_supplicant to support the local Wifi access point.  We can store this permanently by appending the wpa_supplicant.conf file.  Be sure to use the double-greater-than and not just a single, a single one will wipe the file!  *This configuration change only needs to be done once as it will be saved to the file system.*
+
+    wpa_passphrase WLAN_NAME WLAN_PASSWORD >> /etc/wpa_supplicant.conf
+
+Now you need to add some lines inside the file.  Be sure to do this inside the `network={` block, one entry per line.  You can do this with the `vi /etc/wpa_supplicant.conf` command (sorry if you don't have your favorite editor available, vi seems to be what shipped with it):
+
+    scan_ssid=1
+    proto=RSN
+    key_mgmt=WPA-PSK
+    group=CCMP
+    pairwise=CCMP
+    priority=10
+
+These additionals help to show hidden APs, and sets the encryption type.
+
+Now that the definition for the access point is set, you will want to bring up the wireless interface.  To bring up a temporary interface (which will disappear on reboot or power loss) enter the following:
+
+    ifconfig mlan0 up && wpa_supplicant -B -i mlan0 -c /etc/wpa_supplicant.conf -D wext && sleep 15 && udhcpc -i mlan0
