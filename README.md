@@ -72,3 +72,10 @@ These additionals help to show hidden APs, and sets the encryption type.
 Now that the definition for the access point is set, you will want to bring up the wireless interface.  To bring up a temporary interface (which will disappear on reboot or power loss) enter the following:
 
     ifconfig mlan0 up && wpa_supplicant -B -i mlan0 -c /etc/wpa_supplicant.conf -D wext && sleep 15 && udhcpc -i mlan0
+
+# Build tools
+
+Let's see what we have available:
+
+    python --version ; echo ; gcc -v ; echo ; make -v
+
