@@ -12,7 +12,7 @@ Unfortunately the only instructions I have at this time will be for Windows.  I 
 
 NOTE: while most of these units came with no warranty, I will caution that you will be making a minor modification to the unit you have.  If you don't feel comfortable I can only suggest you don't proceed.  It is, after all, a more or less unrealized product.
 
-You most likely have the unit in front of you, powered on.  You saw the ring-circle of lights at the top during bootup, and it went dark.  So now what?  Well, the unit I have is running Yocto Linux with a busybox environment.  This might be enough to work something out.
+You most likely have the unit in front of you, powered on.  You saw the ring-circle of lights at the top during bootup, and it went dark.  So now what?  Well, the unit I have is running Ostro Linux with a busybox environment, I'm not sure but it seems to be a variant of Yocto, so your mileage may vary with these instructions.  This might be enough to work something out.
 
 First we need to get into the unit itself.  For this, you will need to peel back a sticker that runs along the long spine of it.  This sticker covers various ports.  You'll know you have the right one when it has a hole punched in the sticker for the power port.
 
